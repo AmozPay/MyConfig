@@ -1,0 +1,12 @@
+- copy:
+    src: ../files/vscode.repo
+    dest: /etc/yum.repos.d/vscode.repo
+  become: true
+- dnf:
+    update_cache: true
+    name:
+      - "vim-enhanced"
+      - emacs
+      - code
+    state: present
+  become: true

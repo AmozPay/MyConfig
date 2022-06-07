@@ -1,0 +1,14 @@
+- name: install chsh and zsh
+  dnf:
+    name:
+      - util-linux-user
+      - zsh
+    state: present
+  become: true
+- name: Change shell
+  ansible.builtin.user:
+    name: "{{user}}"
+    shell: /bin/zsh
+- command: sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  args:
+    creates: /home/{{user}}/.oh-my-zsh

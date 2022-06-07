@@ -1,0 +1,18 @@
+- name: install editors (vim + vscode)
+  hosts: 127.0.0.1
+  connection: local
+  vars_files:
+    - ./vars.yml
+  roles:
+    - git
+    - editors
+    - docker
+    - zsh
+    - teams
+    - ssh
+    - virtualbox
+    - zoom
+    - tools
+    - obsidian
+    - folders
+    - discord

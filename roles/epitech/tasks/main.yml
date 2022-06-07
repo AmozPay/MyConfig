@@ -1,0 +1,21 @@
+- file:
+    path: /home/{{user}}/dev/
+    state: directory
+- file:
+    path: /home/{{user}}/dev/tek
+    state: directory
+- file:
+    path: /home/{{user}}/dev/tek/tools
+    state: directory
+- file:
+    path: /home/{{user}}/dev/tek/1
+    state: directory
+- file:
+    path: /home/{{user}}/dev/tek/2
+    state: directory
+- name: get calendar linker
+  ansible.builtin.git:
+    repo: https://github.com/Thezap/Linker_EPITECH_To_GOOGLE_Calendar.git
+    dest: /home/{{user}}/dev/tek/tools
+    single_branch: yes
+    version: master

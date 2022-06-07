@@ -1,0 +1,17 @@
+- name: Check if file exists
+  ansible.builtin.stat:
+    path: /usr/bin/obsidian
+  register: obsidian
+# - name: download obsidian appimage
+#   get_url:
+#     url: "https://objects.githubusercontent.com/github-production-release-asset-2e65be/262342594/4be5c8d5-15b0-41c9-8c82-6be44f2efabf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20220607%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20220607T091713Z&X-Amz-Expires=300&X-Amz-Signature=fb7457d6e2ebd94615fd18b229fcea54e66421b078e1388551b34ef771efb6db&X-Amz-SignedHeaders=host&actor_id=66751394&key_id=0&repo_id=262342594&response-content-disposition=attachment%3B%20filename%3DObsidian-0.14.6.AppImage&response-content-type=application%2Foctet-stream"
+#     dest: ./Obsidian-0.14.6.AppImage
+#     mode: 0755
+#   when: obsidian.stat.exists == False
+- name: move app image to path
+  copy:
+    src: ./Obsidian-0.14.6.AppImage
+    dest: /usr/bin/obsidian
+    mode: 0755
+  become: true
+  when: obsidian.stat.exists == False

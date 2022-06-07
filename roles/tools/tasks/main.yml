@@ -1,0 +1,7 @@
+- name: install snap
+  dnf:
+    name: snapd
+  become: true
+- dnf:
+    name: unar
+  become: true

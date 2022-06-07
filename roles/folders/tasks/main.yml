@@ -1,0 +1,4 @@
+- name: setup file paths
+  file:
+    path: /home/{{user}}/dev
+    state: directory

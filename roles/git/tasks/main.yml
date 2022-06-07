@@ -1,0 +1,16 @@
+- name: set git email
+  community.general.git_config:
+    name: user.email
+    scope: global
+    value: "{{ git_email }}"
+
+- name: set git username
+  community.general.git_config:
+    name: user.email
+    scope: global
+    value: "{{ git_username }}"
+
+- name: install gitg
+  dnf:
+    name: gitg
+  become: true

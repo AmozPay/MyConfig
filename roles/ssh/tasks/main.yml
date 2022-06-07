@@ -1,0 +1,4 @@
+- user:
+    name: "{{ user }}"
+    generate_ssh_key: true
+    ssh_key_passphrase: "{{ ssh_passphrase }}"

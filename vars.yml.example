@@ -1,0 +1,5 @@
+user: USER
+ssh_passphrase: ""
+fedora_version: 36
+git_email: your.mail@mail.com
+git_username: Username
