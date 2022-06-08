@@ -14,3 +14,7 @@
   dnf:
     name: gitg
   become: true
+
+- name: install github (gh) commands
+  dnf:
+    name: gh

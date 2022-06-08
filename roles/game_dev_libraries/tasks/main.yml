@@ -1,0 +1,19 @@
+- name: Download Raylib from source
+  ansible.builtin.git:
+    repo: https://github.com/raysan5/raylib.git
+    dest: /home/{{user}}/raylib
+    single_branch: false
+- name: create Raylib build target directory
+  file:
+    path: /home/{{user}}/raylib/build
+    state: directory
+- name: use cmake to create build
+  shell: cd /home/{{user}}/raylib/build && cmake -DBUILD_SHARED_LIBS=ON ..
+- name: build from source
+  community.general.make:
+    chdir: /home/{{user}}/raylib/build
+    target: all
+- name: install
+  community.general.make:
+    chdir: /home/{{user}}/raylib/build
+    target: install

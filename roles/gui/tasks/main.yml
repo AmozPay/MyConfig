@@ -1,0 +1,4 @@
+- name: set dark theme
+  dconf:
+    key: /org/gnome/desktop/interface
+    value: "['color-scheme', 'prefer-dark']"

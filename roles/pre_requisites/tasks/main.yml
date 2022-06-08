@@ -1,0 +1,24 @@
+- name: add rpm free repo
+  dnf:
+    name: https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ fedora_version }}.noarch.rpm
+    disable_gpg_check: true
+  become: true
+- name: add rpm non free repo
+  dnf:
+    name: https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ fedora_version }}.noarch.rpm
+    disable_gpg_check: true
+  become: true
+- name: install pre_requisite packages
+  dnf:
+    name:
+      - python3-pip
+      - dnf-plugins-core
+    state: present
+  become: true
+- name: Install psutil
+  pip:
+    name: psutil
+- dnf:
+    name: "*"
+    state: latest
+  become: true

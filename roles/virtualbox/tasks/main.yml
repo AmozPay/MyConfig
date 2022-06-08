@@ -7,23 +7,26 @@
       - dkms
       - elfutils-libelf-devel
       - qt5-qtx11extras
-  become: true
-# - name: add repo
-#   copy:
-#     src: ../files/virtualbox.repo
-#     dest: /etc/yum.repos.d/virtuabox.repo
-#   become: true
-# - name: add gpg key
-#   rpm_key:
-#     state: present
-#     key: https://www.virtualbox.org/download/oracle_vbox.asc
-#   become: true
-# - name: install virtualbox
-#   dnf:
-#     name: VirtualBox-6.1
-#   become: true
-# - name: add user to virtualbox group
-#   user:
-#     groups: vboxusers
-#     append: true
-#   become: true
+- name: install virtualbox
+  dnf:
+    update_cache: true
+    name: VirtualBox
+- name: add user to virtualbox group
+  user:
+    name: "{{ user }}"
+    groups: vboxusers
+    append: true
+- name: install other dependencies
+  dnf:
+    name:
+      - akmod-VirtualBox
+      - kernel-devel-5.17.5-300.fc36.x86_64
+- name: update akmods
+  shell: akmods --kernels 5.17.5-300.fc36.x86_64
+- name: restart systemd
+  ansible.builtin.systemd:
+    daemon_reload: true
+- name: start vboxdrv
+  ansible.builtin.systemd:
+    state: started
+    name: vboxdrv
