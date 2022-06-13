@@ -1,3 +1,7 @@
+- name: check if raylib source is installed
+  stat:
+    path: /home/{{user}}/raylib
+  register: check_file_name
 - name: Download Raylib from source
   ansible.builtin.git:
     repo: https://github.com/raysan5/raylib.git
@@ -17,3 +21,9 @@
   community.general.make:
     chdir: /home/{{user}}/raylib/build
     target: install
+- name: install boost
+  dnf:
+    name:
+      - boost
+      - boost-devel
+      - boost-json.x86_64

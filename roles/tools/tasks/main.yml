@@ -2,6 +2,15 @@
   dnf:
     name: snapd
   become: true
-- dnf:
+- name: install archiving tools
+  dnf:
     name: unar
   become: true
+
+- name: install nmap
+  dnf:
+    name: nmap
+
+- name: install moreutils
+  dnf:
+    name: moreutils

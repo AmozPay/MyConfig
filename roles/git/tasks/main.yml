@@ -18,3 +18,8 @@
 - name: install github (gh) commands
   dnf:
     name: gh
+
+- name: install gitmoji
+  npm:
+    name: gitmoji-cli
+    global: true

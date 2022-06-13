@@ -6,18 +6,21 @@
   roles:
     - pre_requisites # rmp free / non free repos, pip, updates ...
     - dev_packages
-    - game_dev_libraries # requires dev_packages
+    # - dev_libraries # requires dev_packages
+    - dev_languages
     - gui
-    - git
+    - git # requires npm from dev_languages for gitmoji
     - editors # vscode, vim, emacs
     - docker
     - zsh
     - teams
     - ssh
     - virtualbox
+    - telegram
     - zoom
     - tools
     - obsidian
     - folders
     - discord
-    - terraform
+    - role: diodonfrost.terraform
+    - media
