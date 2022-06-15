@@ -6,7 +6,7 @@
   roles:
     - pre_requisites # rmp free / non free repos, pip, updates ...
     - dev_packages
-    # - dev_libraries # requires dev_packages
+    - dev_libraries # requires dev_packages
     - dev_languages
     - gui
     - git # requires npm from dev_languages for gitmoji
@@ -24,3 +24,5 @@
     - discord
     - role: diodonfrost.terraform
     - media
+    - tor
+    - kubernetes

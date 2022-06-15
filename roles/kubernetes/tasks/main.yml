@@ -1,0 +1,26 @@
+- name: check if is installed
+  stat:
+    path: /usr/local/bin/minikube
+  register: minicube_installed
+
+- name: download binary to path
+  get_url:
+    url: "https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64"
+    dest: /usr/local/bin/minikube
+    mode: 0755
+  when: minicube_installed.stat.exists == False
+
+- name: Add kubectl repository
+  yum_repository:
+    name: Kubernetes
+    description: Kubernetes YUM repo
+    baseurl: https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+    gpgkey:
+      - https://packages.cloud.google.com/yum/doc/yum-key.gpg
+      - https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+    repo_gpgcheck: true
+    gpgcheck: true
+
+- name: install kubectl
+  dnf:
+    name: kubectl
