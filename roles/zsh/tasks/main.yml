@@ -12,3 +12,8 @@
 - command: sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
   args:
     creates: /home/{{user}}/.oh-my-zsh
+
+- name: install tdlr
+  npm:
+    name: tldr
+    global: true

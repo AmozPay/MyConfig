@@ -1,0 +1,11 @@
+- name: change keyboard fnuciton mode
+  copy:
+    src: ../files/fnmode
+    dest: /sys/module/hid_apple/parameters/fnmode
+
+- copy:
+    src: ../files/hid_apple.conf
+    dest: /etc/modprobe.d/hid_apple.conf
+
+- name: set change permanently after reboot
+  command: dracut --force

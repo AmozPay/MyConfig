@@ -8,5 +8,5 @@
       - "vim-enhanced"
       - emacs
       - code
-    state: present
+    state: latest
   become: true
